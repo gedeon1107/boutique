@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ────────────────────────────────────────────── */
+:root {
+  --color-surface:        #111113;
+  --color-surface-raised: #1c1c1f;
+  --color-border:         #2a2a2e;
+  --color-text-muted:     #7e7e88;
+  --color-text-body:      #d0d0d8;
+  --color-accent:         #c9a84c;
+  --color-accent-hover:   #d9be7a;
+  --font-sans:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Focus ring ───────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Typography helpers ───────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ─── Scrollbar (dark theme) ───────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ─── Tabular numerals for prices ──────────────────────────────── */
+.price {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Skeleton shimmer ─────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-raised) 25%,
+    #252528 50%,
+    var(--color-surface-raised) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 4px;
+}
