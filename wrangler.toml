@@ -1,2 +1,5 @@
 name = "boutique"
-assets = "./out"
+compatibility_date = "2026-01-01"
+
+[assets]
+directory = "./out"
